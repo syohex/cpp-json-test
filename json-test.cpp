@@ -18,6 +18,18 @@ namespace {
 			std::cout << "Error not_found_key:" << e.what() << std::endl;
 		}
 	}
+
+	void testfunc2() {
+		std::cout << "## json array  ##" << std::endl;
+
+		json j = json::array();
+		try {
+			j["hoge"] = 10;
+		} catch(std::domain_error& e) {
+			// Using string key for array causes exception
+			std::cout << "Error array with string index:" << e.what() << std::endl;
+		}
+	}
 } // namespace
 
 int main(void)
@@ -34,6 +46,7 @@ int main(void)
 	std::cout << j.dump() << std::endl;
 
 	testfunc1();
+	testfunc2();
 
 	return 0;
 }
