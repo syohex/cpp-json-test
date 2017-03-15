@@ -1,12 +1,28 @@
 #include "json.hpp"
 
+#include <iostream>
 #include <string>
 
 using json = nlohmann::json;
 
+namespace {
+	void testfunc1() {
+		std::cout << "## NOT_FOUND_KEY test ##" << std::endl;
+
+		json j;
+		try {
+			std::string not_found_value = j["not_found"].get<std::string>();
+			std::cout << "not_found_value='" << not_found_value << "'" << std::endl;
+		} catch(std::exception& e) {
+			// access not existing key causes exception
+			std::cout << "Error not_found_key:" << e.what() << std::endl;
+		}
+	}
+} // namespace
+
 int main(void)
 {
-	std::string input("{\"foo\":bar,}");
+	std::string input("{\"foo\": \"bar\" }");
 	json j;
 
 	try {
@@ -16,5 +32,8 @@ int main(void)
 		return 1;
 	}
 	std::cout << j.dump() << std::endl;
+
+	testfunc1();
+
 	return 0;
 }
