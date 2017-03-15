@@ -13,7 +13,7 @@ namespace {
 		try {
 			std::string not_found_value = j["not_found"].get<std::string>();
 			std::cout << "not_found_value='" << not_found_value << "'" << std::endl;
-		} catch(std::exception& e) {
+		} catch(std::domain_error& e) {
 			// access not existing key causes exception
 			std::cout << "Error not_found_key:" << e.what() << std::endl;
 		}
