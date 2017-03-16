@@ -84,6 +84,26 @@ namespace {
 		json n = nullptr;
 		std::cout << "null is object ?:" << n.is_object() << std::endl;
 	}
+
+	void testfunc8() {
+		std::cout << "## Copy test  ##" << std::endl;
+
+		json n = {{"foo", 1}, {"bar", 2}};
+		json k = n;
+		k["foo"] = 99;
+
+		std::cout << "orig:" << n.dump() << std::endl;
+		std::cout << "copy:" << k.dump() << std::endl;
+	}
+
+	void testfunc9() {
+		std::cout << "## un exist key type  ##" << std::endl;
+
+		json n = json::object();
+		json k = n["hoge"];
+		std::cout << "orig:" << k.is_string() << std::endl;
+		std::cout << "orig:" << k.is_null() << std::endl;
+	}
 } // namespace
 
 int main(void)
@@ -106,6 +126,8 @@ int main(void)
 	testfunc5();
 	testfunc6();
 	testfunc7();
+	testfunc8();
+	testfunc9();
 
 	return 0;
 }
