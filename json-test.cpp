@@ -30,6 +30,36 @@ namespace {
 			std::cout << "Error array with string index:" << e.what() << std::endl;
 		}
 	}
+
+	void testfunc3() {
+		std::cout << "## json setting  ##" << std::endl;
+
+		json j;
+		j["1"] = 1;
+		j["2"] = 2;
+
+		json k;
+		k["3"] = 3;
+		k["4"] = 4;
+
+		j["k"] = k;
+
+		std::cout << j.dump() << std::endl;
+	}
+
+	void testfunc4() {
+		std::cout << "## json different type access  ##" << std::endl;
+
+		json j;
+		j["1"] = 1;
+		j["2"] = 2;
+
+		try {
+			std::cout << "value[2] = " << j["2"].get<std::string>() << std::endl;
+		} catch(std::domain_error& e) {
+			std::cout << "Error different type access:" << e.what() << std::endl;
+		}
+	}
 } // namespace
 
 int main(void)
@@ -47,6 +77,8 @@ int main(void)
 
 	testfunc1();
 	testfunc2();
+	testfunc3();
+	testfunc4();
 
 	return 0;
 }
