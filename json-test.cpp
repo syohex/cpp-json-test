@@ -69,6 +69,21 @@ namespace {
 
 		std::cout << "Empty object dump:" << json::object().dump() << std::endl;
 	}
+
+	void testfunc6() {
+		std::cout << "## Array test  ##" << std::endl;
+
+		json a = {1, 2, 3.0, "hoge"};
+		json j = a;
+		std::cout << "Array:" << j.dump() << std::endl; // null
+	}
+
+	void testfunc7() {
+		std::cout << "## null test  ##" << std::endl;
+
+		json n = nullptr;
+		std::cout << "null is object ?:" << n.is_object() << std::endl;
+	}
 } // namespace
 
 int main(void)
@@ -89,6 +104,8 @@ int main(void)
 	testfunc3();
 	testfunc4();
 	testfunc5();
+	testfunc6();
+	testfunc7();
 
 	return 0;
 }
