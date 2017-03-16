@@ -60,6 +60,15 @@ namespace {
 			std::cout << "Error different type access:" << e.what() << std::endl;
 		}
 	}
+
+	void testfunc5() {
+		std::cout << "## Non-initialize json stringify  ##" << std::endl;
+
+		json j;
+		std::cout << "Non initialize json dump:" << j.dump() << std::endl; // null
+
+		std::cout << "Empty object dump:" << json::object().dump() << std::endl;
+	}
 } // namespace
 
 int main(void)
@@ -79,6 +88,7 @@ int main(void)
 	testfunc2();
 	testfunc3();
 	testfunc4();
+	testfunc5();
 
 	return 0;
 }
